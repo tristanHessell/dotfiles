@@ -101,6 +101,10 @@ alias l='ls -CF'
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
+# open vi with -v flag that allows it to access the system clipboard
+alias vim='vim -v'
+alias vi='vim -v'
+
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
@@ -135,9 +139,7 @@ if _has rg; then
   export FZF_CTRL_T_COMMAND='rg --files --follow'
 fi
 
-export FZF_DEFAULT_OPTS='
-  --color=hl:#ff0000,hl+:#ff0000
-'
+export FZF_DEFAULT_OPTS='--color=hl:#ff0000,hl+:#ff0000'
 
 # go to the logbook for the given day - see routley.io/posts/logbook
 lb() {
@@ -165,12 +167,12 @@ fif () {
 ))
   [[ -n "$files" ]] && ${EDITOR:-vim} "${files[@]}"
   
-  }
+}
 
-# open vi with -v flag that allows it to access the system clipboard
-alias vim='vim -v'
-alias vi='vim -v'
+# config to refer to the cfg directory (that stores all the dotfiles)
+config () {
+  git --git-dir=$HOME/.cfg/ --work-tree=$HOME "$@"
+}
 
-# alias config to refer to the cfg directory (that stores all the dotfiles)
-alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+export -f config
 
