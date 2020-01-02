@@ -1,3 +1,5 @@
+let mapleader = ","
+
 set ts=3 " defines the width of tab characters in a file
 set sts=2 " defines the width of a tab you enter
 set et " expand tabs to spaces
@@ -89,10 +91,13 @@ set statusline+=\ %{ObsessionStatus('[$]','')}
 set showcmd
 
 " use ctrl + p to bring up fuzzy finder
-nnoremap <C-P> :Files<CR>
+" nnoremap <C-P> :Files<CR>
 
-" use ctrl + - to bring up buffers, cant use / as vi doesnt allow it on linux
-nmap ; :Buffers<Cr>
+" use ; to bring up buffers 
+nmap ; :Buffers<CR>
+
+" use leader t to bring up files
+nmap <Leader>t :Files<CR>
 
 " ask if we want to save if we try to quit with unsaved buffers
 set confirm
