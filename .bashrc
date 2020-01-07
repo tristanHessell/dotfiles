@@ -184,7 +184,6 @@ installed () {
 
 export -f installed
 
-# tabtab source for yarn package
-# uninstall by removing these lines or running `tabtab uninstall yarn`
-[ -f /usr/local/share/.config/yarn/global/node_modules/tabtab/.completions/yarn.bash ] && . /usr/local/share/.config/yarn/global/node_modules/tabtab/.completions/yarn.bash
+set -o vi
+set show-mode-in-prompt on
 

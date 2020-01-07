@@ -1,0 +1,9 @@
+set show-mode-in-prompt on
+
+# Enable Readline not waiting for additional input when a key is pressed.
+# Needed for the mappings below.
+set keyseq-timeout 50
+
+set vi-cmd-mode-string (C)
+set vi-ins-mode-string (I)
+

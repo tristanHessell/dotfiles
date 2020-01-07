@@ -109,7 +109,8 @@ function! AddLastLine()
   endif
 endfunction
 
-autocmd BufWritePre * call AddLastLine()
+" turned this off as it was messing around with some dev work
+" autocmd BufWritePre * call AddLastLine()
 
 " make colouring work better for dark screens
 set background=dark
@@ -117,6 +118,7 @@ set background=dark
 " make vim reload all buffers changed outside of vim
 set autoread
 
+" update Rg to show a preview
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
   \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
@@ -127,4 +129,39 @@ set t_Co=256
 
 " close vim if NERDTREE is the only buffer open
 autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+" turn built-in indent plugin on
+filetype plugin indent on
+
+function! s:tidyJson()
+  let returnVal = system("jq . " . expand('%'))
+
+  if v:shell_error == 0
+    %!jq . 
+  else
+    echo "Cannot tidy file - invalid JSON file: " . v:shell_error
+  endif
+endfunction
+
+function! s:tidyHtml()
+  let return = system("tidy -i -q " . expand('%'))
+
+  if v:shell_error == 0
+    %!tidy -i -q
+  else
+    echo "Cannot tidy file - invalid Html file: " . v:shell_error
+  endif
+endfunction
+
+" define default (noop) Tidy command
+" setting the default Tidy command like this as
+" there were timing problems when using just `BufEnter *`
+let tidyFtToIgnore = ['json', 'html']
+autocmd BufEnter * if index(tidyFtToIgnore, &ft) < 0 | command! Tidy echo "Cannot tidy file of this type"
+
+" define Tidy command for json files (using jq)
+autocmd FileType json command! Tidy call <SID>tidyJson()
+
+" define Tidy command for html files (using HTML-Tidy)
+autocmd FileType html command! Tidy call <SID>tidyHtml()
 
