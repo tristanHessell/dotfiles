@@ -184,6 +184,7 @@ installed () {
 
 export -f installed
 
+# set bash to operate with vi bindings ins/com mode
 set -o vi
 set show-mode-in-prompt on
 

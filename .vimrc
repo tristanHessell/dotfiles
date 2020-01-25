@@ -165,3 +165,7 @@ autocmd FileType json command! Tidy call <SID>tidyJson()
 " define Tidy command for html files (using HTML-Tidy)
 autocmd FileType html command! Tidy call <SID>tidyHtml()
 
+" make sure that that the background shown as selected when selecting
+" characters in visual mode
+highlight Visual cterm=reverse ctermbg=NONE
+
