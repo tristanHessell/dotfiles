@@ -6,7 +6,8 @@ set et " expand tabs to spaces
 set shiftwidth=2
 
 " make fzf available to vim
-set rtp+=~/.fzf
+set rtp+=/usr/bin/fzf
+source /usr/share/doc/fzf/examples/fzf.vim
 
 " Color name (:help cterm-colors) or ANSI code
 let g:limelight_conceal_ctermfg = 'gray'
