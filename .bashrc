@@ -128,15 +128,13 @@ fi
 export VISUAL=vim
 export EDITOR="$VISUAL"
 
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
-
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 if _has rg; then
-  export FZF_DEFAULT_COMMAND='rg --files --follow'
-  export FZF_CTRL_T_COMMAND='rg --files --follow'
+  export FZF_DEFAULT_COMMAND='rg --files --hidden --follow'
+  export FZF_CTRL_T_COMMAND='rg --files --hidden --follow'
 fi
 
 export FZF_DEFAULT_OPTS='--color=hl:#ff0000,hl+:#ff0000'
