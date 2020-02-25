@@ -170,3 +170,5 @@ autocmd FileType html command! Tidy call <SID>tidyHtml()
 " characters in visual mode
 highlight Visual cterm=reverse ctermbg=NONE
 
+" , c: toggle a column under the cursor (does not work in tty)
+nnoremap <Leader>c :set cursorcolumn!<CR>
