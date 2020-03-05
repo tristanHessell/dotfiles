@@ -3,8 +3,6 @@
 	name = thessell
 [core]
 	editor = vi
-[diff]
-	tool = vimdiff
 [merge]
 	tool = vimdiff
 	conflictstyle = diff3
@@ -12,9 +10,11 @@
 	prompt = false
 [difftool]
 	prompt = false
+	trustExitCode = true
 [mergetool]
 	prompt = false
 	keepBackup = false
+	trustExitCode = true
 
 [alias]
     lg = !"git lg1"

@@ -21,7 +21,7 @@ Configuration files for my current environment. This method of tracking configur
 ### Get all the good executables
 
 ```bash
-  sudo apt install fzf vim-gtk3 bat curl synapse tidy moc libncurses5-dev libncursesw5-dev xsel cowsay ripgrep jq acpi
+  sudo apt install fzf vim-gtk3 bat curl synapse tidy moc libncurses5-dev libncursesw5-dev xsel cowsay ripgrep jq acpi vifm
 ```
 - tpm: https://github.com/tmux-plugins/tpm#installation
     - make sure to install the tmux plugins too
@@ -62,3 +62,4 @@ echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo s
 ```bash
   dconf dump /org/mate/panel > .ubuntu-config/mate/panel/.conf
 ```
+

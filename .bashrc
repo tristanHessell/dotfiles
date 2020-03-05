@@ -103,7 +103,7 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 
 # open vi with -v flag that allows it to access the system clipboard
 alias vim='vim -v'
-alias vi='vim -v'
+alias vi='vi -v'
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
