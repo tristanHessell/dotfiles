@@ -91,14 +91,14 @@ set statusline+=\ %{ObsessionStatus('[$]','')}
 " show command as typing it
 set showcmd
 
-" use ctrl + p to bring up fuzzy finder
-" nnoremap <C-P> :Files<CR>
-
 " use ; to bring up buffers 
 nmap ; :Buffers<CR>
 
 " use leader t to bring up files
 nmap <Leader>t :Files<CR>
+
+" user leader m to bring up marks
+nmap <Leader>m :Marks<CR>
 
 " ask if we want to save if we try to quit with unsaved buffers
 set confirm
@@ -170,6 +170,10 @@ autocmd FileType html command! Tidy call <SID>tidyHtml()
 " characters in visual mode
 highlight Visual cterm=reverse ctermbg=NONE
 
-" , c: toggle a column under the cursor (does not work in tty)
-nnoremap <Leader>c :set cursorcolumn!<CR>
+" , C: toggle a column under the cursor (does not work in tty)
+" this column moves with the cursor
+nnoremap <Leader>C :set cursorcolumn!<CR>
+
+" set preview window at botom of screen
+set splitbelow
 
