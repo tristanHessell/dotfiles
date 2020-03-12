@@ -21,12 +21,12 @@ Configuration files for my current environment. This method of tracking configur
 ### Get all the good executables
 
 ```bash
-  sudo apt install fzf vim-gtk3 bat curl synapse tidy moc libncurses5-dev libncursesw5-dev xsel cowsay ripgrep jq acpi vifm universal-ctags
+  sudo apt install fzf vim-gtk3 bat curl synapse tidy moc libncurses5-dev libncursesw5-dev xsel cowsay ripgrep jq acpi vifm universal-ctags tree
 ```
 - tpm: https://github.com/tmux-plugins/tpm#installation
     - make sure to install the tmux plugins too
-- nvm: https://classic.yarnpkg.com/en/docs/install#debian-stable
-- yarn: https://github.com/nvm-sh/nvm#installing-and-updating
+- yarn: https://classic.yarnpkg.com/en/docs/install#debian-stable
+- nvm: https://github.com/nvm-sh/nvm#installing-and-updating
 - yarn-autocompletions: https://github.com/dsifford/yarn-completion#installation
 - an sql viewer - currently using https://dev.mysql.com/downloads/workbench/ as is most relevant to work
 
@@ -47,7 +47,7 @@ echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo s
 
 ### Setup shortcuts for Ubuntu MATE UI
 ```bash
-  dconf load .ubuntu-config/mate/marco/.conf /org/mate/marco
+  dconf load .ubuntu-config/mate/marco/.conf /org/mate/marco/
 ```
 
 ```bash
@@ -63,3 +63,8 @@ echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo s
   dconf dump /org/mate/panel/ > .ubuntu-config/mate/panel/.conf
 ```
 
+## Configure FZF
+this makes C-T, C-R and alt-c use fzf
+```bash
+  source usr/share/doc/fzf/examples/key-bindings.bash
+```

@@ -186,3 +186,6 @@ export -f installed
 set -o vi
 set show-mode-in-prompt on
 
+
+export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'"
+

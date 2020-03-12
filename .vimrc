@@ -1,3 +1,5 @@
+set nocompatible
+
 let mapleader = ","
 
 set ts=3 " defines the width of tab characters in a file
@@ -176,4 +178,11 @@ nnoremap <Leader>C :set cursorcolumn!<CR>
 
 " set preview window at botom of screen
 set splitbelow
+
+" no-op backspace and delete in insert mode
+" (i will probably add these back in - i am just using them temporarily so i
+" learn to code in vim while using the correct motions)
+" inoremap <BS> <Nop>
+" inoremap <Del> <Nop>
+
 
