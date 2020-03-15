@@ -13,10 +13,10 @@ Configuration files for my current environment. This method of tracking configur
 ### Get this configuration
 
 1. `git clone --bare https://github.com/tristanHessell/dotfiles.git $HOME/.cfg`
-2. `git checkout --git-dir=$HOME/.cfg/ --work-tree=$HOME`
+2. `git --git-dir=$HOME/.cfg/ --work-tree=$HOME checkout`
 3. `source .bashrc`
 4. `config config --local status.showUntrackedFiles no`
-5. `config update --init --recursive`
+5. `config submodule update --init --recursive`
 
 ### Get all the good executables
 
@@ -47,11 +47,11 @@ echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo s
 
 ### Setup shortcuts for Ubuntu MATE UI
 ```bash
-  dconf load .ubuntu-config/mate/marco/.conf /org/mate/marco/
+  cat .ubuntu-config/mate/marco/.conf | dconf load /org/mate/marco/
 ```
 
 ```bash
-  dconf load .ubuntu-config/mate/panel/.conf /org/mate/panel/
+  cat .ubuntu-config/mate/panel/.conf | dconf load /org/mate/panel/
 ```
 
 #### To update the .conf files
@@ -66,5 +66,5 @@ echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo s
 ## Configure FZF
 this makes C-T, C-R and alt-c use fzf
 ```bash
-  source usr/share/doc/fzf/examples/key-bindings.bash
+  source /usr/share/doc/fzf/examples/key-bindings.bash
 ```
