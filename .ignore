@@ -7,5 +7,21 @@
 .cache
 snap
 .vim/undo
+.vim/pack/plugins
+.viminfo
+
+" you cannot ignore a directory and then re-include files from it
+" so we exclude everthing in the directory, but then add
+" everything we want back from it
+.vifm/*
+!.vifm/vifmrc
+
+.tmux/plugins
 .gnome
+.mozilla
+.xsession*
+.git
+
+package-lock.json
+yarn.lock
 

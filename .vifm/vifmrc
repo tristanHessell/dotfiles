@@ -171,8 +171,10 @@ command! reload :write | restart
 " You can also add %CLEAR if you want to clear screen before running FUSE
 " program.
 
+" change directory preview to be tree with a bit more
+fileview */ tree -a -L 3 --noreport -I '.git|node_modules' %c 
+
 " Programming
-" fileviewer *.html,*.css,*.js,*.json,*.md,*.vim,.vimrc,.*.json,*.yml highlight -O xterm256 %c
 fileviewer *.html,*.css,*.js,*.json,*.md,*.vim,.vimrc,.*.json,*.yml env -uCOLORTERM bat --color always --wrap never --pager never %c -p
 
 " Pdf

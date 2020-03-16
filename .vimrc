@@ -124,7 +124,7 @@ set autoread
 " update Rg to show a preview
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
-  \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
+  \   'rg --hidden --follow --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
   \   fzf#vim#with_preview(), <bang>0)
 
 " required so that Limelight can be used in a tty terminal
@@ -185,4 +185,18 @@ set splitbelow
 " inoremap <BS> <Nop>
 " inoremap <Del> <Nop>
 
+" make it possible to show whitespace and use different characters for it
+set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:·
+
+" , w: toggle showing the *w*hitespace characters
+nnoremap <Leader>w :set list!<CR>
+
+" highlight all search matches
+set hlsearch
+
+" pressing return (only) in normal mode gets rid of search highlighting
+nnoremap <CR> :nohlsearch<CR><CR>
+
+" highlight matches as you are typing your searches
+set incsearch
 

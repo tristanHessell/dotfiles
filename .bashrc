@@ -1,4 +1,4 @@
-# ~/.bashrc: executed by bash(1) for non-login shells.
+# ~/.bashrc: executed by bash(2) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
@@ -161,7 +161,7 @@ fif () {
   if [ ! "$#" -gt 0 ]; then echo "Need string to search for"; return 1; fi
 
   local files
-  IFS=$'\n' files=($(rg --files-with-matches --no-messages "$1" | fzf --preview "highlight -O ansi -l {} 2> /dev/null | rg --colors 'match:bg:yellow' --ignore-case --pretty --context 10 '$1' || rg --ignore-case --pretty --context 10 '$1' {}"
+  IFS=$'\n' files=($(rg --files-with-matches --no-messages --hidden --follow "$1" | fzf --preview "highlight -O ansi -l {} 2> /dev/null | rg --colors 'match:bg:yellow' --ignore-case --pretty --context 10 '$1' || rg --ignore-case --pretty --context 10 '$1' {}"
 ))
   [[ -n "$files" ]] && ${EDITOR:-vim} "${files[@]}"
   
@@ -186,6 +186,12 @@ export -f installed
 set -o vi
 set show-mode-in-prompt on
 
-
 export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'"
+
+if [ -f /usr/share/doc/fzf/examples/key-bindings.bash ]; then
+  source /usr/share/doc/fzf/examples/key-bindings.bash
+fi
+
+# set capslock to be escape key
+setxkbmap -option caps:escape
 

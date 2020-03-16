@@ -23,6 +23,7 @@ Configuration files for my current environment. This method of tracking configur
 ```bash
   sudo apt install fzf vim-gtk3 bat curl synapse tidy moc libncurses5-dev libncursesw5-dev xsel cowsay ripgrep jq acpi vifm universal-ctags tree
 ```
+
 - tpm: https://github.com/tmux-plugins/tpm#installation
     - make sure to install the tmux plugins too
 - yarn: https://classic.yarnpkg.com/en/docs/install#debian-stable
@@ -31,21 +32,19 @@ Configuration files for my current environment. This method of tracking configur
 - an sql viewer - currently using https://dev.mysql.com/downloads/workbench/ as is most relevant to work
 
 ### Install snap executables
+
 - code
 - slack
 - spotify
 
 ### Increase number of file watchers
+
 ```bash
 echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
 ```
 
-### Change capslock to escape
-```bash
-  setxkbmap -option caps:escape
-```
-
 ### Setup shortcuts for Ubuntu MATE UI
+
 ```bash
   cat .ubuntu-config/mate/marco/.conf | dconf load /org/mate/marco/
 ```
@@ -55,6 +54,7 @@ echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo s
 ```
 
 #### To update the .conf files
+
 ```bash
   dconf dump /org/mate/marco/ > .ubuntu-config/mate/marco/.conf
 ```
@@ -63,8 +63,3 @@ echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo s
   dconf dump /org/mate/panel/ > .ubuntu-config/mate/panel/.conf
 ```
 
-## Configure FZF
-this makes C-T, C-R and alt-c use fzf
-```bash
-  source /usr/share/doc/fzf/examples/key-bindings.bash
-```
