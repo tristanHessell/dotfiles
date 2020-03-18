@@ -7,9 +7,28 @@ set sts=2 " defines the width of a tab you enter
 set et " expand tabs to spaces
 set shiftwidth=2
 
-" make fzf available to vim
-set rtp+=/usr/bin/fzf
-source /usr/share/doc/fzf/examples/fzf.vim
+" only set the fzf stuff if we have fzf
+if executable("fzf")
+  " make fzf available to vim
+  set rtp+=/usr/bin/fzf
+  source /usr/share/doc/fzf/examples/fzf.vim
+
+  " update Rg to show a preview
+  command! -bang -nargs=* Rg
+    \ call fzf#vim#grep(
+    \   'rg --hidden --follow --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
+    \   fzf#vim#with_preview(), <bang>0)
+
+  " use ; to bring up buffers 
+  nmap ; :Buffers<CR>
+
+  " use leader t to bring up files
+  nmap <Leader>t :Files<CR>
+
+  " user leader m to bring up marks
+  nmap <Leader>m :Marks<CR>
+
+endif
 
 " Color name (:help cterm-colors) or ANSI code
 let g:limelight_conceal_ctermfg = 'gray'
@@ -37,7 +56,8 @@ autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
 autocmd BufLeave,FocusLost,InsertEnter * set norelativenumber
 
 " keep swapfiles in a central location
-set directory^=$HOME/.vim/swap//
+" commented out as we dont use swap files at all
+" set directory^=$HOME/.vim/swap//
 
 " turn off arrow keys in normal mode
 noremap <Up> <NOP>
@@ -93,15 +113,6 @@ set statusline+=\ %{ObsessionStatus('[$]','')}
 " show command as typing it
 set showcmd
 
-" use ; to bring up buffers 
-nmap ; :Buffers<CR>
-
-" use leader t to bring up files
-nmap <Leader>t :Files<CR>
-
-" user leader m to bring up marks
-nmap <Leader>m :Marks<CR>
-
 " ask if we want to save if we try to quit with unsaved buffers
 set confirm
 
@@ -120,12 +131,6 @@ set background=dark
 
 " make vim reload all buffers changed outside of vim
 set autoread
-
-" update Rg to show a preview
-command! -bang -nargs=* Rg
-  \ call fzf#vim#grep(
-  \   'rg --hidden --follow --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
-  \   fzf#vim#with_preview(), <bang>0)
 
 " required so that Limelight can be used in a tty terminal
 set t_Co=256
@@ -187,6 +192,8 @@ set splitbelow
 
 " make it possible to show whitespace and use different characters for it
 set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:·
+highlight SpecialKey ctermfg=darkblue guifg=darkblue
+highlight NonText ctermfg=darkblue guifg=darkblue
 
 " , w: toggle showing the *w*hitespace characters
 nnoremap <Leader>w :set list!<CR>
