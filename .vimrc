@@ -10,8 +10,18 @@ set shiftwidth=2
 " only set the fzf stuff if we have fzf
 if executable("fzf")
   " make fzf available to vim
-  set rtp+=/usr/bin/fzf
-  source /usr/share/doc/fzf/examples/fzf.vim
+  " .fzf is required if the package was downloaded through git
+  " such as if you are on a version of ubuntu that doesnt have it
+  " accessible through apt
+  if !empty(glob("~/.fzf"))
+    set rtp+=~/.fzf
+  else
+    set rtp+=/usr/bin/fzf
+  endif
+
+  if !empty(glob("/usr/share/doc/fzf/examples/fzf.vim"))
+    source /usr/share/doc/fzf/examples/fzf.vim
+  endif
 
   " update Rg to show a preview
   command! -bang -nargs=* Rg
@@ -28,6 +38,9 @@ if executable("fzf")
   " user leader m to bring up marks
   nmap <Leader>m :Marks<CR>
 
+else
+  nmap ; :buffers<CR>
+  nmap <Leader>m :marks<CR>
 endif
 
 " Color name (:help cterm-colors) or ANSI code
