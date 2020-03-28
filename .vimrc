@@ -208,15 +208,21 @@ set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:·
 highlight SpecialKey ctermfg=darkblue guifg=darkblue
 highlight NonText ctermfg=darkblue guifg=darkblue
 
-" , w: toggle showing the *w*hitespace characters
+" , w: toggle showing the *w*hitespace characters 
 nnoremap <Leader>w :set list!<CR>
 
 " highlight all search matches
 set hlsearch
 
 " pressing return (only) in normal mode gets rid of search highlighting
-nnoremap <CR> :nohlsearch<CR><CR>
+nnoremap <SPACE> :nohlsearch<CR>
 
 " highlight matches as you are typing your searches
 set incsearch
+
+nnoremap <leader>c :execute "set colorcolumn=" . (&colorcolumn == "" ? col('.') : "")<CR>
+
+" toggle the undotree with ,u
+let g:undotree_WindowLayout = 2
+nnoremap <LEADER>u :UndotreeToggle<CR> :UndotreeFocus<CR>
 
