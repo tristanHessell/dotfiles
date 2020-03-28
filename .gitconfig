@@ -6,8 +6,6 @@
 [merge]
 	tool = vimdiff
 	conflictstyle = diff3
-[diftool]
-	prompt = false
 [difftool]
 	prompt = false
 	trustExitCode = true
@@ -15,7 +13,6 @@
 	prompt = false
 	keepBackup = false
 	trustExitCode = true
-
 [alias]
     lg = !"git lg1"
     lg1 = !"git lg1-specific --all"

@@ -125,6 +125,15 @@ if ! shopt -oq posix; then
   fi
 fi
 
+# TAKEN FROM: https://stackoverflow.com/a/55241227/6304194
+# Preload git completion in Ubuntu which is normally lazy loaded but we need
+# the __git_wrap__git_main function available for our completion.
+if [[ -e /usr/share/bash-completion/completions/git ]]; then
+  source /usr/share/bash-completion/completions/git
+elif [[ -e /usr/local/etc/bash_completion.d/git-completion.bash ]]; then
+  source /usr/local/etc/bash_completion.d/git-completion.bash
+fi
+
 export VISUAL=vim
 export EDITOR="$VISUAL"
 
@@ -167,12 +176,9 @@ fif () {
   
 }
 
-# config to refer to the cfg directory (that stores all the dotfiles)
-config () {
-  git --git-dir=$HOME/.cfg/ --work-tree=$HOME "$@"
-}
-
-export -f config
+alias config='git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+# make sure the config alias has the git bash completions
+__git_complete config _git
 
 # helper method to get things installed by apt. Does not track anything installed any other way (snap/git etc).
 # taken from: https://askubuntu.com/a/250530/939968
