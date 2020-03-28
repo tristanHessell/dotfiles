@@ -63,3 +63,13 @@ echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo s
   dconf dump /org/mate/panel/ > .ubuntu-config/mate/panel/.conf
 ```
 
+## Known issues:
+
+### vi
+
+- https://github.com/junegunn/fzf.vim/issues/510 (non fatal)
+
+### tmux
+
+- error message on first load of tmux (non fatal)
+

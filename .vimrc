@@ -32,10 +32,10 @@ if executable("fzf")
   " use ; to bring up buffers 
   nmap ; :Buffers<CR>
 
-  " use leader t to bring up files
-  nmap <Leader>t :Files<CR>
+  " use leader f to bring up files
+  nmap <Leader>f :Files<CR>
 
-  " user leader m to bring up marks
+  " use leader m to bring up marks
   nmap <Leader>m :Marks<CR>
 
 else
