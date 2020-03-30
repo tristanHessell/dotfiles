@@ -31,3 +31,15 @@
 [submodule ".vim/pack/plugins/start/nerdtree"]
 	path = .vim/pack/plugins/start/nerdtree
 	url = https://github.com/scrooloose/nerdtree.git
+[submodule ".vim/pack/plugins/start/ReplaceWithRegister"]
+	path = .vim/pack/plugins/start/ReplaceWithRegister
+	url = ssh://git@github.com/vim-scripts/ReplaceWithRegister
+[submodule ".vim/pack/plugins/start/vim-gutentags"]
+	path = .vim/pack/plugins/start/vim-gutentags
+	url = ssh://git@github.com/ludovicchabant/vim-gutentags.git
+[submodule ".vim/pack/plugins/start/vim-repeat"]
+	path = .vim/pack/plugins/start/vim-repeat
+	url = ssh://git@github.com/tpope/vim-repeat
+[submodule ".vim/pack/plugins/start/vim-surround"]
+	path = .vim/pack/plugins/start/vim-surround
+	url = ssh://git@github.com/tpope/vim-surround

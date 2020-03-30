@@ -176,8 +176,11 @@ fif () {
   
 }
 
-alias config='git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
-# make sure the config alias has the git bash completions
+config () {
+  git --git-dir=$HOME/.cfg/ --work-tree=$HOME $@
+}
+
+export -f config
 __git_complete config _git
 
 # helper method to get things installed by apt. Does not track anything installed any other way (snap/git etc).

@@ -1,4 +1,9 @@
+" make vim not try to be comaptible with vi
 set nocompatible
+
+" make vim not interpet modelines (text in a file that can be used to
+" configure vim)"
+set nomodeline
 
 let mapleader = ","
 
@@ -225,4 +230,7 @@ nnoremap <leader>c :execute "set colorcolumn=" . (&colorcolumn == "" ? col('.') 
 " toggle the undotree with ,u
 let g:undotree_WindowLayout = 2
 nnoremap <LEADER>u :UndotreeToggle<CR> :UndotreeFocus<CR>
+
+" show jump list with ,j
+nnoremap <LEADER>j :jumps<CR>
 
