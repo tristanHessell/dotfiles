@@ -234,3 +234,6 @@ nnoremap <LEADER>u :UndotreeToggle<CR> :UndotreeFocus<CR>
 " show jump list with ,j
 nnoremap <LEADER>j :jumps<CR>
 
+nnoremap <LEADER>jsx :-1read $HOME/.snippets/component.jsx<CR>:%s/COMPONENT/
+" TODO make this take input for the component name and then go to the render
+" body
