@@ -237,3 +237,20 @@ nnoremap <LEADER>j :jumps<CR>
 nnoremap <LEADER>jsx :-1read $HOME/.snippets/component.jsx<CR>:%s/COMPONENT/
 " TODO make this take input for the component name and then go to the render
 " body
+
+" open up splits to the right of the current split
+set splitright
+
+" show netrw with no header, and in tree mode
+let g:netrw_liststyle = 3
+let g:netrw_banner = 0
+let g:netrw_fastbrowse = 0
+
+" make searching case insensitive when no capitals are in string, case
+" sensitive when they contain capitals
+set smartcase
+set ignorecase
+
+" F**k ex mode!
+nmap Q <Nop>
+
