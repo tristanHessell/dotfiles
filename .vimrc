@@ -12,6 +12,8 @@ set sts=2 " defines the width of a tab you enter
 set et " expand tabs to spaces
 set shiftwidth=2
 
+let g:highlightedyank_highlight_duration = 500
+
 " only set the fzf stuff if we have fzf
 if executable("fzf")
   " make fzf available to vim
