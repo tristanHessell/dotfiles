@@ -21,7 +21,7 @@ Configuration files for my current environment. This method of tracking configur
 ### Get all the good executables
 
 ```bash
-  sudo apt install fzf vim-gtk3 bat curl synapse tidy moc libncurses5-dev libncursesw5-dev xsel cowsay ripgrep jq acpi vifm universal-ctags tree
+  sudo apt install fzf vim-gtk3 bat curl synapse tidy moc libncurses5-dev libncursesw5-dev xsel cowsay ripgrep jq acpi vifm universal-ctags tree fortunes gimp
 ```
 
 - tpm: https://github.com/tmux-plugins/tpm#installation
