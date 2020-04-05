@@ -177,7 +177,7 @@ fif () {
 }
 
 config () {
-  git --git-dir=$HOME/.cfg/ --work-tree=$HOME $@
+  git --git-dir=$HOME/.cfg/ --work-tree=$HOME "$@"
 }
 
 export -f config
