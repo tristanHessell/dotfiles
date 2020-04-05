@@ -1,6 +1,7 @@
 [user]
 	email = tristan.hessell@gmail.com
 	name = thessell
+	signingKey = 8959DD25EB6B2565
 [core]
 	editor = vi
 [merge]
@@ -32,3 +33,5 @@ FZF-EOF\""
 	default = current
 [url "ssh://git@github.com/"]
 	insteadOf = https://github.com/
+[commit]
+	gpgsign = true

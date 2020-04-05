@@ -13,3 +13,5 @@ if [ -f "$HOME/.bashrc" ]; then
   . "$HOME/.bashrc"
 fi
 
+export GPG_TTY=$(tty)
+
