@@ -3,7 +3,7 @@
 # (i cant remember why - something to do with tty sessions not having a GUI)
 # we need the display so that vi can use the system clipboard for copy/pasting
 
-if [ -z "$DISPLAY" ] 
+if [ -z "$DISPLAY" ]
 then
   # the display environment variable is not set
   export DISPLAY=:0.0

@@ -213,9 +213,6 @@ if [ -f /usr/share/doc/fzf/examples/key-bindings.bash ]; then
   source /usr/share/doc/fzf/examples/key-bindings.bash
 fi
 
-# set capslock to be escape key
-setxkbmap -option caps:escape
-
 # automatically added by git-installed fzf install script
 # used only if cant download fzf through apt
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
