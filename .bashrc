@@ -13,6 +13,10 @@ _has() {
   return $( which $1 &>/dev/null )
 }
 
+# turn off flow control characters
+# meaning C-s wont stop the terminal anymore
+stty -ixon
+
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
