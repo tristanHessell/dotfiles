@@ -211,3 +211,18 @@ setxkbmap -option caps:escape
 # automatically added by git-installed fzf install script
 # used only if cant download fzf through apt
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+loadshortcuts() {
+  cat .ubuntu-config/mate/marco/.conf | dconf load /org/mate/marco/
+  cat .ubuntu-config/mate/panel/.conf | dconf load /org/mate/panel/
+}
+
+export -f loadshortcuts
+
+saveshortcuts() {
+  dconf dump /org/mate/marco/ > .ubuntu-config/mate/marco/.conf
+  dconf dump /org/mate/panel/ > .ubuntu-config/mate/panel/.conf
+}
+
+export -f saveshortcuts
+
