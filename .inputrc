@@ -7,3 +7,10 @@ set keyseq-timeout 50
 set vi-cmd-mode-string (C)
 set vi-ins-mode-string (I)
 
+# single tab press for completion
+set show-all-if-ambiguous on
+
+# ignore case and hyphen/underscore when auto completing
+set completion-ignore-case on
+set completion-map-case on
+
