@@ -256,3 +256,22 @@ set ignorecase
 " F**k ex mode!
 nmap Q <Nop>
 
+" show the wildmenu, allowing you to cleanly tab complete filenames/commands
+" etc
+if has("wildmenu")
+  set wildmenu
+  set wildmode=longest:list
+endif
+
+" ignore case sensitivity for filename completion
+if exists("&wildignorecase")
+  set wildignorecase
+endif
+
+" dont open up help with F1
+nnoremap <F1> <NOP>
+" dont try to man the current word with K
+nnoremap K <NOP>
+
+" make Y work like D and C - from the cursor to the end of the line
+nnoremap Y y$
