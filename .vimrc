@@ -33,21 +33,21 @@ if executable("fzf")
   " update Rg to show a preview
   command! -bang -nargs=* Rg
     \ call fzf#vim#grep(
-    \   'rg --hidden --follow --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
-    \   fzf#vim#with_preview(), <bang>0)
+    \   'rg --hidden --follow --column --line-number --no-heading --color=always --smart-case '.shellescape(<Q-ARGS>), 1,
+    \   fzf#vim#with_preview(), <BANG>0)
 
   " use ; to bring up buffers 
   nmap ; :Buffers<CR>
 
   " use leader f to bring up files
-  nmap <Leader>f :Files<CR>
+  nmap <LEADER>f :Files<CR>
 
   " use leader m to bring up marks
-  nmap <Leader>m :Marks<CR>
+  nmap <LEADER>m :Marks<CR>
 
 else
   nmap ; :buffers<CR>
-  nmap <Leader>m :marks<CR>
+  nmap <LEADER>m :marks<CR>
 endif
 
 " Color name (:help cterm-colors) or ANSI code
@@ -80,16 +80,16 @@ autocmd BufLeave,FocusLost,InsertEnter * set norelativenumber
 " set directory^=$HOME/.vim/swap//
 
 " turn off arrow keys in normal mode
-noremap <Up> <NOP>
-noremap <Down> <NOP>
-noremap <Left> <NOP>
-noremap <Right> <NOP>
+noremap <UP> <NOP>
+noremap <DOWN> <NOP>
+noremap <LEFT> <NOP>
+noremap <RIGHT> <NOP>
 
 " turn off arrow keys in insert mode
-inoremap <Up> <NOP>
-inoremap <Down> <NOP>
-inoremap <Left> <NOP>
-inoremap <Right> <NOP>
+inoremap <UP> <NOP>
+inoremap <DOWN> <NOP>
+inoremap <LEFT> <NOP>
+inoremap <RIGHT> <NOP>
 
 " persist undo history of files
 set undodir=~/.vim/undo
@@ -199,7 +199,7 @@ highlight Visual cterm=reverse ctermbg=NONE
 
 " , C: toggle a column under the cursor (does not work in tty)
 " this column moves with the cursor
-nnoremap <Leader>C :set cursorcolumn!<CR>
+nnoremap <LEADER>C :set cursorcolumn!<CR>
 
 " set preview window at botom of screen
 set splitbelow
@@ -207,8 +207,8 @@ set splitbelow
 " no-op backspace and delete in insert mode
 " (i will probably add these back in - i am just using them temporarily so i
 " learn to code in vim while using the correct motions)
-" inoremap <BS> <Nop>
-" inoremap <Del> <Nop>
+" inoremap <BS> <NOP>
+" inoremap <DEL> <NOP>
 
 " make it possible to show whitespace and use different characters for it
 set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:·
@@ -216,7 +216,7 @@ highlight SpecialKey ctermfg=darkblue guifg=darkblue
 highlight NonText ctermfg=darkblue guifg=darkblue
 
 " , w: toggle showing the *w*hitespace characters 
-nnoremap <Leader>w :set list!<CR>
+nnoremap <LEADER>w :set list!<CR>
 
 " highlight all search matches
 set hlsearch
@@ -227,7 +227,7 @@ nnoremap <SPACE> :nohlsearch<CR>
 " highlight matches as you are typing your searches
 set incsearch
 
-nnoremap <leader>c :execute "set colorcolumn=" . (&colorcolumn == "" ? col('.') : "")<CR>
+nnoremap <LEADER>c :execute "set colorcolumn=" . (&colorcolumn == "" ? col('.') : "")<CR>
 
 " toggle the undotree with ,u
 let g:undotree_WindowLayout = 2
@@ -254,7 +254,7 @@ set smartcase
 set ignorecase
 
 " F**k ex mode!
-nmap Q <Nop>
+nmap Q <NOP>
 
 " show the wildmenu, allowing you to cleanly tab complete filenames/commands
 " etc
@@ -275,3 +275,4 @@ nnoremap K <NOP>
 
 " make Y work like D and C - from the cursor to the end of the line
 nnoremap Y y$
+
