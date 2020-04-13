@@ -182,7 +182,8 @@ fif () {
   if [ ! "$#" -gt 0 ]; then echo "Need string to search for"; return 1; fi
 
   local files
-  IFS=$'\n' files=($(rg --files-with-matches --no-messages --hidden --follow "$1" | fzf --preview "highlight -O ansi -l {} 2> /dev/null | rg --colors 'match:bg:yellow' --ignore-case --pretty --context 10 '$1' || rg --ignore-case --pretty --context 10 '$1' {}"
+  IFS=$'\n'
+  files=($(rg --files-with-matches --no-messages --hidden --sort path --follow "$1" | fzf --preview-window=right:50%:wrap --preview "highlight -O ansi -l {} 2> /dev/null | rg --colors 'match:bg:yellow' --ignore-case --pretty --context 10 '$1' || rg --ignore-case --pretty --context 10 '$1' {}"
 ))
   [[ -n "$files" ]] && ${EDITOR:-vim} "${files[@]}"
   
