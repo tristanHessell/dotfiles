@@ -215,3 +215,9 @@ saveshortcuts() {
 
 export -f saveshortcuts
 
+killx() {
+  killall xinit
+}
+
+export -f killx
+
