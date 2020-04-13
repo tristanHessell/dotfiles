@@ -117,15 +117,6 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 alias vim='vim -v'
 alias vi='vi -v'
 
-# Alias definitions.
-# You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
-# See /usr/share/doc/bash-doc/examples in the bash-doc package.
-
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
-fi
-
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
@@ -195,14 +186,6 @@ config () {
 
 export -f config
 __git_complete config _git
-
-# helper method to get things installed by apt. Does not track anything installed any other way (snap/git etc).
-# taken from: https://askubuntu.com/a/250530/939968
-installed () {
-  (zcat $(ls -tr /var/log/apt/history.log*.gz); cat /var/log/apt/history.log) 2>/dev/null | egrep '^(Start-Date:|Commandline:)' | grep -v aptdaemon | egrep '^Commandline:'
-}
-
-export -f installed
 
 # set bash to operate with vi bindings ins/com mode
 set -o vi
