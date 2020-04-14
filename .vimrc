@@ -275,3 +275,7 @@ nnoremap K <NOP>
 
 " make Y work like D and C - from the cursor to the end of the line
 nnoremap Y y$
+
+" ,b will open the file explorer
+nnoremap <LEADER>b :Rexplore<CR>
+
