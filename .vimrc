@@ -283,5 +283,13 @@ nnoremap K <NOP>
 nnoremap Y y$
 
 " ,b will open the file explorer
-nnoremap <LEADER>b :Rexplore<CR>
+nnoremap <LEADER>b :call ToggleFileBrowser()<CR>
+
+function! ToggleFileBrowser() abort
+  if &filetype ==# 'netrw'
+    :Rex
+  else
+    :Ex
+  endif
+endfunction
 
