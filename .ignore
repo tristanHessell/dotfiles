@@ -21,7 +21,10 @@ snap
 .mozilla
 .xsession*
 .git
+.gnupg
 
 package-lock.json
 yarn.lock
-
+tags
+.tmux/resurrect
+.vim/view

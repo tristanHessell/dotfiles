@@ -117,15 +117,6 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 alias vim='vim -v'
 alias vi='vi -v'
 
-# Alias definitions.
-# You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
-# See /usr/share/doc/bash-doc/examples in the bash-doc package.
-
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
-fi
-
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
@@ -182,7 +173,8 @@ fif () {
   if [ ! "$#" -gt 0 ]; then echo "Need string to search for"; return 1; fi
 
   local files
-  IFS=$'\n' files=($(rg --files-with-matches --no-messages --hidden --follow "$1" | fzf --preview "highlight -O ansi -l {} 2> /dev/null | rg --colors 'match:bg:yellow' --ignore-case --pretty --context 10 '$1' || rg --ignore-case --pretty --context 10 '$1' {}"
+  IFS=$'\n'
+  files=($(rg --files-with-matches --no-messages --hidden --sort path --follow "$1" | fzf --preview-window=right:50%:wrap --preview "highlight -O ansi -l {} 2> /dev/null | rg --colors 'match:bg:yellow' --ignore-case --pretty --context 10 '$1' || rg --ignore-case --pretty --context 10 '$1' {}"
 ))
   [[ -n "$files" ]] && ${EDITOR:-vim} "${files[@]}"
   
@@ -195,14 +187,6 @@ config () {
 export -f config
 __git_complete config _git
 
-# helper method to get things installed by apt. Does not track anything installed any other way (snap/git etc).
-# taken from: https://askubuntu.com/a/250530/939968
-installed () {
-  (zcat $(ls -tr /var/log/apt/history.log*.gz); cat /var/log/apt/history.log) 2>/dev/null | egrep '^(Start-Date:|Commandline:)' | grep -v aptdaemon | egrep '^Commandline:'
-}
-
-export -f installed
-
 # set bash to operate with vi bindings ins/com mode
 set -o vi
 set show-mode-in-prompt on
@@ -212,9 +196,6 @@ export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'"
 if [ -f /usr/share/doc/fzf/examples/key-bindings.bash ]; then
   source /usr/share/doc/fzf/examples/key-bindings.bash
 fi
-
-# set capslock to be escape key
-setxkbmap -option caps:escape
 
 # automatically added by git-installed fzf install script
 # used only if cant download fzf through apt
@@ -233,4 +214,10 @@ saveshortcuts() {
 }
 
 export -f saveshortcuts
+
+killx() {
+  killall xinit
+}
+
+export -f killx
 
