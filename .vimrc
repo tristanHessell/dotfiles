@@ -72,8 +72,14 @@ set smartindent
 
 " show line numbers
 set number relativenumber
-autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+autocmd BufEnter,FocusGained,InsertLeave :call SetNumbering()<CR>
 autocmd BufLeave,FocusLost,InsertEnter * set norelativenumber
+
+function! SetNumbering () abort
+  if &filetype !=# 'netrw' || &filetype !=# 'help'
+    set relativenumber
+  endif
+endfunction
 
 " keep swapfiles in a central location
 " commented out as we dont use swap files at all
