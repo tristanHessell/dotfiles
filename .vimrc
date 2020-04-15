@@ -72,8 +72,12 @@ set smartindent
 
 " show line numbers
 set number relativenumber
-autocmd BufEnter,FocusGained,InsertLeave :call SetNumbering()<CR>
-autocmd BufLeave,FocusLost,InsertEnter * set norelativenumber
+
+augroup numbering_group
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave * call SetNumbering()
+  autocmd BufLeave,FocusLost,InsertEnter * set norelativenumber
+augroup end
 
 function! SetNumbering () abort
   if &filetype !=# 'netrw' || &filetype !=# 'help'
