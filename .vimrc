@@ -209,7 +209,9 @@ augroup end
 
 " make sure that that the background shown as selected when selecting
 " characters in visual mode
-highlight Visual cterm=reverse ctermbg=NONE
+highlight Visual cterm=reverse ctermbg=none
+
+highlight MatchParen ctermfg=grey ctermbg=0
 
 " , C: toggle a column under the cursor (does not work in tty)
 " this column moves with the cursor
