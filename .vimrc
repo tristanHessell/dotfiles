@@ -306,4 +306,16 @@ function! ToggleFileBrowser() abort
   endif
 endfunction
 
+" remove the netrw buffer otherwise its still there when
+" you open vim with the session history (-S)
+function! CheckNetrwBuffer() abort
+  if &filetype ==# 'netrw'
+    :bd
+  endif
+endfunction
+
+augroup exit_group
+  autocmd!
+  autocmd ExitPre * call CheckNetrwBuffer()
+augroup end
 
