@@ -296,12 +296,14 @@ nnoremap <LEADER>b :call ToggleFileBrowser()<CR>
 function! ToggleFileBrowser() abort
   if &filetype ==# 'netrw'
     :Rex
+    call setpos('.', b:cursorPos)
   else
     " if the current buffer has changes, dont leave the buffer
-    " as netrw forgets them D:
+    " as netrw forgets them >:(
     if &mod ==# 1
       echo "Cannot show directory as buffer is unsaved"
     else
+      let b:cursorPos = getpos('.')
       :Ex
     endif
   endif
