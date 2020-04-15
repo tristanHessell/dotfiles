@@ -80,7 +80,7 @@ augroup numbering_group
 augroup end
 
 function! SetNumbering () abort
-  if &filetype !=# 'netrw' || &filetype !=# 'help'
+  if &filetype !=# 'netrw' && &filetype !=# 'help'
     set relativenumber
   endif
 endfunction
