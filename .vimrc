@@ -195,13 +195,17 @@ endfunction
 " setting the default Tidy command like this as
 " there were timing problems when using just `BufEnter *`
 let tidyFtToIgnore = ['json', 'html']
-autocmd BufEnter * if index(tidyFtToIgnore, &ft) < 0 | command! Tidy echo "Cannot tidy file of this type"
 
-" define Tidy command for json files (using jq)
-autocmd FileType json command! Tidy call <SID>tidyJson()
+augroup tidy_group
+  autocmd!
+  autocmd BufEnter * if index(tidyFtToIgnore, &ft) < 0 | command! Tidy echo "Cannot tidy file of this type"
 
-" define Tidy command for html files (using HTML-Tidy)
-autocmd FileType html command! Tidy call <SID>tidyHtml()
+  " define Tidy command for json files (using jq)
+  autocmd FileType json command! Tidy call <SID>tidyJson()
+
+  " define Tidy command for html files (using HTML-Tidy)
+  autocmd FileType html command! Tidy call <SID>tidyHtml()
+augroup end
 
 " make sure that that the background shown as selected when selecting
 " characters in visual mode
