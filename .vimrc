@@ -165,9 +165,6 @@ set autoread
 " required so that Limelight can be used in a tty terminal
 set t_Co=256
 
-" close vim if NERDTREE is the only buffer open
-autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
 " turn built-in indent plugin on
 filetype plugin indent on
 
