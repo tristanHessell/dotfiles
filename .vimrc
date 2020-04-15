@@ -289,7 +289,14 @@ function! ToggleFileBrowser() abort
   if &filetype ==# 'netrw'
     :Rex
   else
-    :Ex
+    " if the current buffer has changes, dont leave the buffer
+    " as netrw forgets them D:
+    if &mod ==# 1
+      echo "Cannot show directory as buffer is unsaved"
+    else
+      :Ex
+    endif
   endif
 endfunction
+
 
