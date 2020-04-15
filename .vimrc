@@ -191,7 +191,7 @@ endfunction
 " define default (noop) Tidy command
 " setting the default Tidy command like this as
 " there were timing problems when using just `BufEnter *`
-let tidyFtToIgnore = ['json', 'html']
+let tidyFtToIgnore = ['json', 'html', 'javascript']
 
 augroup tidy_group
   autocmd!
@@ -202,6 +202,9 @@ augroup tidy_group
 
   " define Tidy command for html files (using HTML-Tidy)
   autocmd FileType html command! Tidy call <SID>tidyHtml()
+
+  "define Tidy command for js files using ALE
+  autocmd FileType javascript command! Tidy :ALEFix
 augroup end
 
 " make sure that that the background shown as selected when selecting
