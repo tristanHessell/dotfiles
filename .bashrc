@@ -49,11 +49,6 @@ case "$TERM" in
     xterm-color|*-256color) color_prompt=yes;;
 esac
 
-# uncomment for a colored prompt, if the terminal has the capability; turned
-# off by default to not distract the user: the focus in a terminal window
-# should be on the output of commands, not on the prompt
-#force_color_prompt=yes
-
 if [ -n "$force_color_prompt" ]; then
     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
 	# We have color support; assume it's compliant with Ecma-48
@@ -137,8 +132,10 @@ elif [[ -e /usr/local/etc/bash_completion.d/git-completion.bash ]]; then
   source /usr/local/etc/bash_completion.d/git-completion.bash
 fi
 
-export VISUAL=vim
-export EDITOR="$VISUAL"
+if hash vim 2>/dev/null; then
+  export VISUAL=vim
+  export EDITOR="$VISUAL"
+fi
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
