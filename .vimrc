@@ -263,6 +263,9 @@ set splitright
 let g:netrw_liststyle = 3
 let g:netrw_banner = 0
 let g:netrw_fastbrowse = 0
+" show netrw previews as a side split
+let g:netrw_preview = 1
+let g:netrw_alto = 0
 
 " make searching case insensitive when no capitals are in string, case
 " sensitive when they contain capitals
@@ -298,14 +301,13 @@ nnoremap <LEADER>b :call ToggleFileBrowser()<CR>
 function! ToggleFileBrowser() abort
   if &filetype ==# 'netrw'
     :Rex
-    call setpos('.', b:cursorPos)
   else
     " if the current buffer has changes, dont leave the buffer
     " as netrw forgets them >:(
     if &mod ==# 1
       echo "Cannot show directory as buffer is unsaved"
     else
-      let b:cursorPos = getpos('.')
+      " let b:cursorPos = getpos('.')
       :Ex
     endif
   endif
@@ -323,4 +325,39 @@ augroup exit_group
   autocmd!
   autocmd ExitPre * call CheckNetrwBuffer()
 augroup end
+
+function! LeaveNetrwBuffer() abort
+  if &filetype ==# 'netrw'
+    :pclose
+  endif
+endfunction
+
+augroup leave_netrw_group
+  autocmd!
+  autocmd BufHidden * call LeaveNetrwBuffer()
+augroup end
+
+function! SetCursorPos() abort
+  let b:cursorPos = getpos('.')
+endfunction
+  
+augroup leave_buffer
+  autocmd!
+  autocmd BufLeave * call SetCursorPos()
+augroup end
+
+function! GetCursorPos() abort
+  let l:pos = get(b:, 'cursorPos', 0)
+  call setpos('.', l:pos)
+endfunction
+
+augroup enter_buffer
+  autocmd!
+  autocmd BufEnter * call GetCursorPos()
+augroup end
+
+" Netrw TODO
+" stop netrw from previewing a directory
+" toggle preview open/close with 'p'
+" make moving the line change the preview
 
