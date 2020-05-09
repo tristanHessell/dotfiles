@@ -53,6 +53,14 @@ echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo s
   cat .ubuntu-config/mate/panel/.conf | dconf load /org/mate/panel/
 ```
 
+### Update the git submodule'd directories
+
+Currently this is only for vim plugins
+
+```bash
+  git submodule foreach git pull origin master
+```
+
 #### To update the .conf files
 
 ```bash
