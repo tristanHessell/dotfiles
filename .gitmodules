@@ -30,7 +30,7 @@
 	url = git://github.com/tmux-plugins/vim-tmux-focus-events.git
 [submodule ".vim/pack/plugins/start/ReplaceWithRegister"]
 	path = .vim/pack/plugins/start/ReplaceWithRegister
-	url = ssh://git@github.com/vim-scripts/ReplaceWithRegister
+	url = git@github.com:tristanHessell/ReplaceWithRegister.git
 [submodule ".vim/pack/plugins/start/vim-repeat"]
 	path = .vim/pack/plugins/start/vim-repeat
 	url = ssh://git@github.com/tpope/vim-repeat
