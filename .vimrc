@@ -140,6 +140,9 @@ set statusline+=\ %l:%c
 set statusline+=\ %{ObsessionStatus('[$]','')}
 " END STATUS LINE
 
+" show index of where the cursor is when searching
+set shortmess-=S
+
 " show command as typing it
 set showcmd
 
