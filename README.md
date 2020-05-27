@@ -18,10 +18,19 @@ Configuration files for my current environment. This method of tracking configur
 4. `config config --local status.showUntrackedFiles no`
 5. `config submodule update --init --recursive`
 
+### Get vim
+
+Vim from the PPA has been updated regularly
+
+```bash
+sudo add-apt-repository ppa:jonathonf/vim
+sudo apt-get update
+```
+
 ### Get all the good executables
 
 ```bash
-  sudo apt install fzf vim-gtk3 bat curl synapse tidy moc libncurses5-dev libncursesw5-dev xsel cowsay ripgrep jq acpi vifm universal-ctags tree fortunes gimp pmount
+  sudo apt install fzf bat curl synapse tidy moc libncurses5-dev libncursesw5-dev xsel cowsay ripgrep jq acpi vifm universal-ctags tree fortunes gimp pmount
 ```
 
 - tpm: https://github.com/tmux-plugins/tpm#installation
@@ -36,6 +45,7 @@ Configuration files for my current environment. This method of tracking configur
 - code
 - slack
 - spotify
+- universal-ctags (ubuntu 18.X)
 
 ### Increase number of file watchers
 
@@ -58,7 +68,7 @@ echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo s
 Currently this is only for vim plugins
 
 ```bash
-  git submodule foreach git pull origin master
+  config submodule update --recursive --merge
 ```
 
 #### To update the .conf files
