@@ -6,7 +6,7 @@
 if [ -z "$DISPLAY" ]
 then
   # the display environment variable is not set
-  export DISPLAY=:0.0
+  export DISPLAY=127.0.0.1:0.0
 fi
 
 if [ -f "$HOME/.bashrc" ]; then
