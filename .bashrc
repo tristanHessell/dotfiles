@@ -58,6 +58,3 @@ done
 
 unset -v confFile
 
-alias cd='pushd'
-alias dc='popd'
-
