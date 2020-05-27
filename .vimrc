@@ -269,6 +269,7 @@ let g:netrw_fastbrowse = 0
 " show netrw previews as a side split
 let g:netrw_preview = 1
 let g:netrw_alto = 0
+let g:netrw_dirhistmax = 0
 
 " make searching case insensitive when no capitals are in string, case
 " sensitive when they contain capitals
