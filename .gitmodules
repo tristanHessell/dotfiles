@@ -31,6 +31,9 @@
 [submodule ".vim/pack/plugins/start/ReplaceWithRegister"]
 	path = .vim/pack/plugins/start/ReplaceWithRegister
 	url = git@github.com:tristanHessell/ReplaceWithRegister.git
+[submodule ".vim/pack/plugins/start/vim-gutentags"]	
+	path = .vim/pack/plugins/start/vim-gutentags	
+   url = ssh://git@github.com/ludovicchabant/vim-gutentags.git
 [submodule ".vim/pack/plugins/start/vim-repeat"]
 	path = .vim/pack/plugins/start/vim-repeat
 	url = ssh://git@github.com/tpope/vim-repeat
