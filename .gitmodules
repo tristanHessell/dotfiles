@@ -43,3 +43,6 @@
 [submodule ".vim/pack/plugins/start/vim-highlighted-yank"]
 	path = .vim/pack/plugins/start/vim-highlighted-yank
 	url = https://github.com/machakann/vim-highlightedyank.git
+[submodule "/home/thirteen/.vim/pack/plugins/start/fzf"]
+	path = /home/thirteen/.vim/pack/plugins/start/fzf
+	url = https://github.com/junegunn/fzf

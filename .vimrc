@@ -26,10 +26,6 @@ if executable("fzf")
     set rtp+=/usr/bin/fzf
   endif
 
-  if !empty(glob("/usr/share/doc/fzf/examples/fzf.vim"))
-    source /usr/share/doc/fzf/examples/fzf.vim
-  endif
-
   " update Rg to show a preview
   command! -bang -nargs=* Rg
     \ call fzf#vim#grep(
