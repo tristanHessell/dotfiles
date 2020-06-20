@@ -81,10 +81,6 @@ function! SetNumbering () abort
   endif
 endfunction
 
-" keep swapfiles in a central location
-" commented out as we dont use swap files at all
-" set directory^=$HOME/.vim/swap//
-
 " turn off arrow keys in normal mode
 noremap <UP> <NOP>
 noremap <DOWN> <NOP>
@@ -145,16 +141,6 @@ set showcmd
 " ask if we want to save if we try to quit with unsaved buffers
 set confirm
 
-" make sure that the file has a newline on save
-function! AddLastLine()
-  if getline('$') !~ "^$"
-    call append(line('$'), '')
-  endif
-endfunction
-
-" turned this off as it was messing around with some dev work
-" autocmd BufWritePre * call AddLastLine()
-
 " make colouring work better for dark screens
 set background=dark
 
@@ -166,6 +152,8 @@ set t_Co=256
 
 " turn built-in indent plugin on
 filetype plugin indent on
+
+set omnifunc=syntaxcomplete#Complete
 
 function! s:tidyJson()
   let returnVal = system("jq . " . expand('%'))
@@ -187,13 +175,14 @@ function! s:tidyHtml()
   endif
 endfunction
 
-" define default (noop) Tidy command
-" setting the default Tidy command like this as
-" there were timing problems when using just `BufEnter *`
-let tidyFtToIgnore = ['json', 'html', 'javascript']
-
 augroup tidy_group
   autocmd!
+
+  " define default (noop) Tidy command
+  " setting the default Tidy command like this as
+  " there were timing problems when using just `BufEnter *`
+  let tidyFtToIgnore = ['json', 'html', 'javascript']
+
   autocmd BufEnter * if index(tidyFtToIgnore, &ft) < 0 | command! Tidy echo "Cannot tidy file of this type"
 
   " define Tidy command for json files (using jq)
@@ -218,12 +207,6 @@ nnoremap <LEADER>C :set cursorcolumn!<CR>
 
 " set preview window at botom of screen
 set splitbelow
-
-" no-op backspace and delete in insert mode
-" (i will probably add these back in - i am just using them temporarily so i
-" learn to code in vim while using the correct motions)
-" inoremap <BS> <NOP>
-" inoremap <DEL> <NOP>
 
 " make it possible to show whitespace and use different characters for it
 set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:·
@@ -251,9 +234,16 @@ nnoremap <LEADER>u :UndotreeToggle<CR> :UndotreeFocus<CR>
 " show jump list with ,j
 nnoremap <LEADER>j :jumps<CR>
 
-nnoremap <LEADER>jsx :-1read $HOME/.snippets/component.jsx<CR>:%s/COMPONENT/
-" TODO make this take input for the component name and then go to the render
-" body
+function! Jsx (name)
+  :-1read $HOME/.snippets/component.jsx
+  :.,+11 s/COMPONENT/\=a:name/g
+endfunction
+
+" Jsx <component>: insert component snipped at cursor
+command! -nargs=1 Jsx :call Jsx(<q-args>)
+
+" Ren <filename>: rename buffer to filename
+command! -nargs=1 -bang -complete=file Ren f <args>|w<bang>
 
 " open up splits to the right of the current split
 set splitright
@@ -307,7 +297,6 @@ function! ToggleFileBrowser() abort
     if &mod ==# 1
       echo "Cannot show directory as buffer is unsaved"
     else
-      " let b:cursorPos = getpos('.')
       :Ex
     endif
   endif
@@ -347,6 +336,8 @@ augroup leave_buffer
 augroup end
 
 function! GetCursorPos() abort
+  " default to the top of the buffer
+  " if you haven't opened it before
   let l:pos = get(b:, 'cursorPos', 0)
   call setpos('.', l:pos)
 endfunction
@@ -357,6 +348,7 @@ augroup enter_buffer
 augroup end
 
 " Netrw TODO
+" open netrw at the position of the buffer
 " stop netrw from previewing a directory
 " toggle preview open/close with 'p'
 " make moving the line change the preview
