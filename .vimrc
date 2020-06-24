@@ -347,6 +347,9 @@ augroup enter_buffer
   autocmd BufEnter * call GetCursorPos()
 augroup end
 
+" use the Lsp of the file to jump to the definition (instead of using tags)
+nnoremap <c-]> :LspDefinition<cr>
+
 " Netrw TODO
 " open netrw at the position of the buffer
 " stop netrw from previewing a directory
