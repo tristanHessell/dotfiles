@@ -49,7 +49,6 @@ sudo apt-get update
 - code
 - slack
 - spotify
-- universal-ctags (ubuntu 18.X)
 
 ### Increase number of file watchers
 
