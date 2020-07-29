@@ -347,8 +347,14 @@ augroup enter_buffer
   autocmd BufEnter * call GetCursorPos()
 augroup end
 
+" make it so you can use ctrl-] to jump when NOT in a help file
+" Its a lazy solution to the problem
+augroup jump_group
+  autocmd!
+  autocmd FileType * nnoremap <buffer> <c-]> :LspDefinition<cr>
 " use the Lsp of the file to jump to the definition (instead of using tags)
-nnoremap <c-]> :LspDefinition<cr>
+  autocmd FileType help unmap <buffer> <c-]>
+augroup end
 
 " Netrw TODO
 " open netrw at the position of the buffer
