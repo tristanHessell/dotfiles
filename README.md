@@ -75,7 +75,7 @@ sudo apt-get update
 Currently this is only for vim plugins
 
 ```bash
-  config submodule update --recursive --merge
+  git submodule update --recursive --remote
 ```
 
 ## Known issues:
