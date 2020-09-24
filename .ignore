@@ -28,3 +28,7 @@ yarn.lock
 tags
 .tmux/resurrect
 .vim/view
+
+" mac directories
+Library/
+Desktop/Relocated Items

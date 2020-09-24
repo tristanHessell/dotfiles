@@ -10,7 +10,7 @@ export FZF_DEFAULT_OPTS='--color=hl:#ff0000,hl+:#ff0000'
 # fe [FUZZY_PATTERN] - Open the selected file in default editor
 fe () {
   local files
-  IFS=$'\n' files=($(fzf-tmux --query="$1" --multi))
+  IFS=$'\n' files=($(fzf --query="$1" --multi))
   [[ -n "$files" ]] && ${EDITOR:-vim} "${files[@]}"
 }
 

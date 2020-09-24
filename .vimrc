@@ -1,5 +1,6 @@
 " make vim not try to be comaptible with vi
 set nocompatible
+syntax on
 
 " make vim not interpet modelines (text in a file that can be used to
 " configure vim)"
@@ -361,4 +362,6 @@ augroup end
 " stop netrw from previewing a directory
 " toggle preview open/close with 'p'
 " make moving the line change the preview
+
+set backspace=indent,eol,start
 

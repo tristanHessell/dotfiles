@@ -15,3 +15,5 @@ fi
 
 export GPG_TTY=$(tty)
 
+
+[ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
