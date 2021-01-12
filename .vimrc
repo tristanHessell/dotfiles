@@ -353,9 +353,15 @@ augroup end
 augroup jump_group
   autocmd!
   autocmd FileType * nnoremap <buffer> <c-]> :LspDefinition<cr>
+  autocmd FileType * nnoremap <buffer> <c-\> :LspReferences<cr>
+
 " use the Lsp of the file to jump to the definition (instead of using tags)
   autocmd FileType help unmap <buffer> <c-]>
+  autocmd FileType help unmap <buffer> <c-\>
 augroup end
+
+" this isnt the greatest key stroke, but vim isn't the best when it comes to key strokes. See https://stackoverflow.com/questions/18955798/using-ctrl-instead-of-esc-in-vim
+nnoremap <c-p> :rightbelow LspDefinition<cr>
 
 " Netrw TODO
 " open netrw at the position of the buffer
@@ -364,4 +370,22 @@ augroup end
 " make moving the line change the preview
 
 set backspace=indent,eol,start
+
+" move around the quickfix list
+nnoremap <LEADER>q :cprev<cr>
+nnoremap <LEADER>a :cnext<cr>
+
+" toggle the quickfix list
+command -bang -nargs=? QFix call QFixToggle(<bang>0)
+function! QFixToggle(forced)
+  if exists("g:qfix_win") && a:forced == 0
+    cclose
+    unlet g:qfix_win
+  else
+    copen 10
+    let g:qfix_win = bufnr("$")
+  endif
+endfunction
+
+nnoremap <LEADER>c :QFix<cr>
 

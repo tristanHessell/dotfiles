@@ -9,6 +9,9 @@ snap
 .vim/undo
 .vim/pack/plugins
 .viminfo
+.viminfz.tmp
+.lesshst
+.bash_history
 
 " you cannot ignore a directory and then re-include files from it
 " so we exclude everthing in the directory, but then add
