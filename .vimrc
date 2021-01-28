@@ -202,10 +202,6 @@ highlight Visual cterm=reverse ctermbg=none
 
 highlight MatchParen ctermfg=grey ctermbg=0
 
-" , C: toggle a column under the cursor (does not work in tty)
-" this column moves with the cursor
-nnoremap <LEADER>C :set cursorcolumn!<CR>
-
 " set preview window at botom of screen
 set splitbelow
 
@@ -225,8 +221,6 @@ nnoremap <SPACE> :nohlsearch<CR>
 
 " highlight matches as you are typing your searches
 set incsearch
-
-nnoremap <LEADER>c :execute "set colorcolumn=" . (&colorcolumn == "" ? col('.') : "")<CR>
 
 " toggle the undotree with ,u
 let g:undotree_WindowLayout = 2
@@ -370,10 +364,6 @@ nnoremap <c-p> :rightbelow LspDefinition<cr>
 " make moving the line change the preview
 
 set backspace=indent,eol,start
-
-" move around the quickfix list
-nnoremap <LEADER>q :cprev<cr>
-nnoremap <LEADER>a :cnext<cr>
 
 " toggle the quickfix list
 command -bang -nargs=? QFix call QFixToggle(<bang>0)
