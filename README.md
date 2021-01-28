@@ -33,10 +33,11 @@ sudo apt-get update
 ### Get all the good executables
 
 ```bash
-  sudo apt install fzf bat curl synapse tidy moc libncurses5-dev libncursesw5-dev 
+  sudo apt install bat curl synapse tidy moc libncurses5-dev libncursesw5-dev 
   xsel cowsay ripgrep jq acpi vifm tree fortunes gimp pmount
 ```
 
+- fzf: https://github.com/junegunn/fzf
 - tpm: https://github.com/tmux-plugins/tpm#installation
     - make sure to install the tmux plugins too
 - yarn: https://classic.yarnpkg.com/en/docs/install#debian-stable
