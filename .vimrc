@@ -17,6 +17,8 @@ let g:highlightedyank_highlight_duration = 500
 
 " only set the fzf stuff if we have fzf
 if executable("fzf")
+  let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
+
   " make fzf available to vim
   " .fzf is required if the package was downloaded through git
   " such as if you are on a version of ubuntu that doesnt have it
