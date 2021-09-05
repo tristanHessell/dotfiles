@@ -88,3 +88,11 @@ Currently this is only for vim plugins
 
 - error message on first load of tmux (non fatal)
 
+
+## How To's
+
+### Add a new plugin to vi
+
+```bash
+config submodule add <the url> .vim/pack/start/<the name>
+```
