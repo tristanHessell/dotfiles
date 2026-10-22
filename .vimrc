@@ -103,8 +103,24 @@ set undofile
 " make sure there is no delay for escaping from visual mode
 set timeoutlen=1000 ttimeoutlen=0
 
-" use system clipboard
-set clipboard=unnamedplus,unnamed
+" Use the native clipboard when available, or copy yanks with xsel.
+if has('clipboard')
+  set clipboard=unnamedplus,unnamed
+elseif executable('xsel')
+  function! s:CopyUnnamedRegisterToClipboard() abort
+    let l:contents = getreg('"', 1, 1)
+    let l:text = join(l:contents, "\n")
+    if getregtype('"') ==# 'V'
+      let l:text .= "\n"
+    endif
+    call system('xsel --clipboard --input', l:text)
+  endfunction
+
+  augroup system_clipboard_fallback
+    autocmd!
+    autocmd TextYankPost * if v:event.operator ==# 'y' | call <SID>CopyUnnamedRegisterToClipboard() | endif
+  augroup end
+endif
 
 " always say how many lines have been yanked
 set report=0
