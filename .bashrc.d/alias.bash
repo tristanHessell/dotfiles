@@ -43,6 +43,7 @@ __git_complete config _git
 loadshortcuts() {
   cat .ubuntu-config/mate/marco/.conf | dconf load /org/mate/marco/
   cat .ubuntu-config/mate/panel/.conf | dconf load /org/mate/panel/
+  cat .ubuntu-config/mate/keyboard/.conf | dconf load /org/mate/peripherals-keyboard-xkb/
 }
 
 export -f loadshortcuts
@@ -50,6 +51,7 @@ export -f loadshortcuts
 saveshortcuts() {
   dconf dump /org/mate/marco/ > .ubuntu-config/mate/marco/.conf
   dconf dump /org/mate/panel/ > .ubuntu-config/mate/panel/.conf
+  dconf dump /org/mate/peripherals-keyboard-xkb/ > .ubuntu-config/mate/keyboard/.conf
 }
 
 export -f saveshortcuts

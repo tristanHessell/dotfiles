@@ -132,7 +132,7 @@ set statusline+=%m
 " line number:column number
 set statusline+=\ %l:%c
 " shows if the session is being recorded ([$]) or not (nothing)
-set statusline+=\ %{ObsessionStatus('[$]','')}
+set statusline+=\ %{exists('*ObsessionStatus')?ObsessionStatus('[$]',''):''}
 " END STATUS LINE
 
 " show index of where the cursor is when searching
@@ -335,8 +335,10 @@ augroup end
 function! GetCursorPos() abort
   " default to the top of the buffer
   " if you haven't opened it before
-  let l:pos = get(b:, 'cursorPos', 0)
-  call setpos('.', l:pos)
+  let l:pos = get(b:, 'cursorPos', [])
+  if !empty(l:pos)
+    call setpos('.', l:pos)
+  endif
 endfunction
 
 augroup enter_buffer

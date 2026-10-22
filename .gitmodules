@@ -21,22 +21,22 @@
 	url = https://github.com/jamesroutley/vim-logbook.git
 [submodule ".vim/pack/plugins/start/vim-obsession"]
 	path = .vim/pack/plugins/start/vim-obsession
-	url = git://github.com/tpope/vim-obsession.git
+	url = https://github.com/tpope/vim-obsession.git
 [submodule ".vim/pack/plugins/start/vim-polyglot"]
 	path = .vim/pack/plugins/start/vim-polyglot
 	url = https://github.com/sheerun/vim-polyglot
 [submodule ".vim/pack/plugins/start/vim-tmux-focus-events"]
 	path = .vim/pack/plugins/start/vim-tmux-focus-events
-	url = git://github.com/tmux-plugins/vim-tmux-focus-events.git
+	url = https://github.com/tmux-plugins/vim-tmux-focus-events.git
 [submodule ".vim/pack/plugins/start/ReplaceWithRegister"]
 	path = .vim/pack/plugins/start/ReplaceWithRegister
-	url = git@github.com:tristanHessell/ReplaceWithRegister.git
+	url = https://github.com/tristanHessell/ReplaceWithRegister.git
 [submodule ".vim/pack/plugins/start/vim-repeat"]
 	path = .vim/pack/plugins/start/vim-repeat
-	url = ssh://git@github.com/tpope/vim-repeat
+	url = https://github.com/tpope/vim-repeat.git
 [submodule ".vim/pack/plugins/start/vim-surround"]
 	path = .vim/pack/plugins/start/vim-surround
-	url = ssh://git@github.com/tpope/vim-surround
+	url = https://github.com/tpope/vim-surround.git
 [submodule ".vim/pack/plugins/start/fzf"]
 	path = .vim/pack/plugins/start/fzf
 	url = https://github.com/junegunn/fzf
@@ -49,6 +49,9 @@
 [submodule ".vim/pack/plugins/start/vim-highlightedyank"]
 	path = .vim/pack/plugins/start/vim-highlightedyank
 	url = https://github.com/machakann/vim-highlightedyank.git
+[submodule ".vim/pack/plugins/start/vim-unimpaired"]
+	path = .vim/pack/plugins/start/vim-unimpaired
+	url = https://github.com/tpope/vim-unimpaired.git
 [submodule ".vim/pack/plugins/start/vim-bufkill"]
 	path = .vim/pack/plugins/start/vim-bufkill
 	url = https://github.com/qpkorr/vim-bufkill
