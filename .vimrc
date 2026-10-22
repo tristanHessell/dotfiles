@@ -144,8 +144,21 @@ set showcmd
 " ask if we want to save if we try to quit with unsaved buffers
 set confirm
 
-" make colouring work better for dark screens
-set background=dark
+" Match the syntax palette to the terminal background.
+" Set g:vim_background to 'light' or 'dark' to override terminal detection.
+if exists('g:vim_background') && index(['light', 'dark'], g:vim_background) >= 0
+  let &background = g:vim_background
+elseif !empty($COLORFGBG)
+  let s:terminalBackground = matchstr($COLORFGBG, '[^;]*$')
+  if s:terminalBackground =~# '^\d\+$'
+    let &background = str2nr(s:terminalBackground) < 8 ? 'dark' : 'light'
+  else
+    set background=light
+  endif
+  unlet s:terminalBackground
+else
+  set background=light
+endif
 
 " make vim reload all buffers changed outside of vim
 set autoread
