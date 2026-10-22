@@ -103,8 +103,24 @@ set undofile
 " make sure there is no delay for escaping from visual mode
 set timeoutlen=1000 ttimeoutlen=0
 
-" use system clipboard
-set clipboard=unnamedplus,unnamed
+" Use the native clipboard when available, or copy yanks with xsel.
+if has('clipboard')
+  set clipboard=unnamedplus,unnamed
+elseif executable('xsel')
+  function! s:CopyUnnamedRegisterToClipboard() abort
+    let l:contents = getreg('"', 1, 1)
+    let l:text = join(l:contents, "\n")
+    if getregtype('"') ==# 'V'
+      let l:text .= "\n"
+    endif
+    call system('xsel --clipboard --input', l:text)
+  endfunction
+
+  augroup system_clipboard_fallback
+    autocmd!
+    autocmd TextYankPost * if v:event.operator ==# 'y' | call <SID>CopyUnnamedRegisterToClipboard() | endif
+  augroup end
+endif
 
 " always say how many lines have been yanked
 set report=0
@@ -144,8 +160,21 @@ set showcmd
 " ask if we want to save if we try to quit with unsaved buffers
 set confirm
 
-" make colouring work better for dark screens
-set background=dark
+" Match the syntax palette to the terminal background.
+" Set g:vim_background to 'light' or 'dark' to override terminal detection.
+if exists('g:vim_background') && index(['light', 'dark'], g:vim_background) >= 0
+  let &background = g:vim_background
+elseif !empty($COLORFGBG)
+  let s:terminalBackground = matchstr($COLORFGBG, '[^;]*$')
+  if s:terminalBackground =~# '^\d\+$'
+    let &background = str2nr(s:terminalBackground) < 8 ? 'dark' : 'light'
+  else
+    set background=light
+  endif
+  unlet s:terminalBackground
+else
+  set background=light
+endif
 
 " make vim reload all buffers changed outside of vim
 set autoread

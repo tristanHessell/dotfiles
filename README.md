@@ -28,7 +28,7 @@ Vim from the PPA has been updated regularly
 ```bash
 sudo add-apt-repository ppa:jonathonf/vim
 sudo apt-get update
-sudo apt-get install vim
+sudo apt-get install vim-gtk3 xsel
 ```
 
 ### Get all the good executables
