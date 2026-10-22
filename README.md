@@ -28,6 +28,7 @@ Vim from the PPA has been updated regularly
 ```bash
 sudo add-apt-repository ppa:jonathonf/vim
 sudo apt-get update
+sudo apt-get install vim
 ```
 
 ### Get all the good executables
@@ -63,6 +64,8 @@ sudo apt-get update
 ```bash
   loadshortcuts
 ```
+
+The keyboard config maps Caps Lock to Escape. The `loadshortcuts` command also loads this mapping.
 
 #### To update the .conf files
 
