@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Caps Lock to Escape
+Exec=/usr/bin/setxkbmap -option caps:escape
+OnlyShowIn=MATE;
+X-MATE-Autostart-enabled=true

@@ -65,7 +65,7 @@ sudo apt-get install vim-gtk3 xsel
   loadshortcuts
 ```
 
-The keyboard config maps Caps Lock to Escape. The `loadshortcuts` command also loads this mapping.
+The MATE autostart entry maps Caps Lock to Escape at login. The `loadshortcuts` command also loads the saved keyboard settings.
 
 #### To update the .conf files
 
